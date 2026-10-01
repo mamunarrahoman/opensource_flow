@@ -1,0 +1,79 @@
++ mkdir /tmp/xdg-run
++ cd /OpenROAD-flow-scripts/flow
++ '[' -f ../env.sh ']'
++ . ../env.sh
+++ __setpaths
+++ [[ linux-gnu == \d\a\r\w\i\n* ]]
+++++ readlink -f ../env.sh
++++ dirname /OpenROAD-flow-scripts/env.sh
+++ DIR=/OpenROAD-flow-scripts
+++ export OPENROAD=/OpenROAD-flow-scripts/tools/OpenROAD
+++ OPENROAD=/OpenROAD-flow-scripts/tools/OpenROAD
+++ echo 'OPENROAD: /OpenROAD-flow-scripts/tools/OpenROAD'
+OPENROAD: /OpenROAD-flow-scripts/tools/OpenROAD
+++ export PATH=/OpenROAD-flow-scripts/tools/install/OpenROAD/bin:/usr/local/bin/wrapped-cc:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/OpenROAD-flow-scripts/tools/install/OpenROAD/bin:/usr/local/bin/wrapped-cc:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export PATH=/OpenROAD-flow-scripts/tools/install/yosys/bin:/OpenROAD-flow-scripts/tools/install/OpenROAD/bin:/usr/local/bin/wrapped-cc:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/OpenROAD-flow-scripts/tools/install/yosys/bin:/OpenROAD-flow-scripts/tools/install/OpenROAD/bin:/usr/local/bin/wrapped-cc:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export PATH=/OpenROAD-flow-scripts/tools/install/kepler-formal/bin:/OpenROAD-flow-scripts/tools/install/yosys/bin:/OpenROAD-flow-scripts/tools/install/OpenROAD/bin:/usr/local/bin/wrapped-cc:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/OpenROAD-flow-scripts/tools/install/kepler-formal/bin:/OpenROAD-flow-scripts/tools/install/yosys/bin:/OpenROAD-flow-scripts/tools/install/OpenROAD/bin:/usr/local/bin/wrapped-cc:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ [[ linux-gnu == \d\a\r\w\i\n* ]]
+++ export FLOW_HOME=/OpenROAD-flow-scripts/flow
+++ FLOW_HOME=/OpenROAD-flow-scripts/flow
+++ unset -f __setpaths
++ yosys -help
+Yosys Open SYnthesis Suite
+Usage:
+  yosys [OPTION...] [<infile> [..]]
+
+ operation options:
+  -b, --backend <backend>       use <backend> for the output file specified on the command line
+  -f, --frontend <frontend>     use <frontend> for the input files on the command line
+  -s, --scriptfile <scriptfile>
+                                execute the commands in <scriptfile>
+  -c, --tcl-scriptfile <tcl_scriptfile>
+                                execute the commands in the TCL <tcl_scriptfile> (see 'help tcl' for details)
+  -C, --tcl-interactive         enters TCL interactive shell mode
+  -p, --commands <commands>     execute <commands> (to chain commands, separate them with semicolon + whitespace: 'cmd1; cmd2')
+  -r, --top <top>               elaborate the specified HDL <top> module
+  -m, --plugin <plugin>         load the specified <plugin> module
+  -D, --define <define>[=<value>]
+                                set the specified Verilog define to <value> if supplied via command "read -define"
+  -S, --synth                   shortcut for calling the "synth" command, a default script for transforming the Verilog input to a gate-level netlist. For example: yosys -o output.blif -S input.v For more complex synthesis jobs it is recommended to use the read_* and write_* commands in a script file instead of specifying input and output files on the command line.
+  -H                            print the command list
+  -h, --help [<command>]        print this help message. If given, print help for <command>.
+  -V, --version                 print version information and exit
+      --git-hash                print git commit hash and exit
+
+ logging options:
+  -Q                            suppress printing of banner (copyright, disclaimer, version)
+  -T                            suppress printing of footer (log hash, version, timing statistics)
+      --no-version              suppress writing out Yosys version anywhere excluding -V, --version
+  -q, --quiet                   quiet operation. Only write warnings and error messages to console. Use this option twice to also quiet warning messages
+  -v, --verbose <level>         print log headers up to <level> to the console. Implies -q for everything except the 'End of script.' message.
+  -t, --timestamp               annotate all log messages with a time stamp
+  -d, --detailed-timing         print more detailed timing stats at exit
+  -l, --logfile <logfile>       write log messages to <logfile>
+  -L, --line-buffered-logfile <logfile>
+                                like -l but open <logfile> in line buffered mode
+  -o, --outfile <outfile>       write the design to <outfile> on exit
+  -P, --dump-design <header_id>[:<filename>]
+                                dump the design when printing the specified log header to a file. yosys_dump_<header_id>.il is used as filename if none is specified. Use 'ALL' as <header_id> to dump at every header.
+  -W, --warning-as-warning <regex>
+                                print a warning for all log messages matching <regex>
+  -w, --warning-as-message <regex>
+                                if a warning message matches <regex>, it is printed as regular message instead
+  -e, --warning-as-error <regex>
+                                if a warning message matches <regex>, it is printed as error message instead
+  -E, --deps-file <depsfile>    write a Makefile dependencies file <depsfile> with input and output file names
+
+ developer options:
+  -X, --trace                   enable tracing of core data structure changes. for debugging
+  -M, --randomize-pointers      will slightly randomize allocated pointer addresses. for debugging
+      --autoidx <idx>           start counting autoidx up from <seed>, similar effect to --hash-seed
+      --hash-seed <seed>        mix up hashing values with <seed>, for extreme optimization and testing
+  -A, --abort                   will call abort() at the end of the script. for debugging
+  -x, --experimental <feature>  do not print warnings for the experimental <feature>
+  -g, --debug                   globally enable debug log messages
+      --perffile <perffile>     write a JSON performance log to <perffile>
+

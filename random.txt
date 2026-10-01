@@ -1,0 +1,22 @@
+read_verilog $::env(DESIGN_VERILOG)                             # Read design
+hierarchy -check -top $::env(DESIGN_NM)                         # Elaborate design hierarchy
+proc; opt; fsm; opt; memory; opt                                # The high-level stuff
+techmap; opt                                                    # Mapping to internal cell library
+dfflibmap -liberty $::env(LIB_PATH)                             # Mapping flip-flops to PDK LIB
+abc -liberty $::env(LIB_PATH)                                   # Mapping logic to PDK LIB
+clean                                                           # Cleanup
+write_verilog $::env(SYN_DIR)/${::env(DESIGN_NM)}_mapped.v      # Write synthesized design
+
+# To customize the dot file to understand the input/output port
+show -color green i:* -color red o:* -format dot -prefix $::env(SYN_DIR)/${::env(DESIGN_NM)}_mapped
+
+
+
+read_verilog $::env(DESIGN_VERILOG)
+hierarchy -check -top $::env(DESIGN_NM)
+yosys proc; opt; fsm; opt; memory; opt
+techmap; opt
+dfflibmap -liberty $::env(LIB_PATH)
+abc -liberty $::env(LIB_PATH)
+clean
+write_verilog $::env(SYN_DIR)/${::env(DESIGN_NM)}_mapped.v
