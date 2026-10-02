@@ -1,4 +1,5 @@
 # 4-bit ALU ASIC Open-Source RTL-to-GDSII Flow
+## Project in Progress — Full details and results will be showcased here upon completion. Stay connected!
 
 This repository contains an automated, Makefile-driven ASIC physical design flow for a **4-bit Arithmetic Logic Unit (`alu_4bit`)** utilizing open-source EDA tools (`Yosys`, `OpenROAD`).
 
