@@ -1,4 +1,4 @@
-# 4-bit ALU ASIC Open-Source RTL-to-GDSII Flow
+# PPA-Driven Design and Optimization of a Heterogeneous CPU–GPU SoC with Unified Shared Memory for High-Performance Computing.
 ## Project in Progress — Full details and results will be showcased here upon completion. Stay connected!
 
 This repository contains an automated, Makefile-driven ASIC physical design flow for a **4-bit Arithmetic Logic Unit (`alu_4bit`)** utilizing open-source EDA tools (`Yosys`, `OpenROAD`).
