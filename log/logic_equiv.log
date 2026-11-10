@@ -1,26 +1,10 @@
 
  /----------------------------------------------------------------------------\
- |                                                                            |
  |  yosys -- Yosys Open SYnthesis Suite                                       |
- |                                                                            |
- |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
- |                                                                            |
- |  Permission to use, copy, modify, and/or distribute this software for any  |
- |  purpose with or without fee is hereby granted, provided that the above    |
- |  copyright notice and this permission notice appear in all copies.         |
- |                                                                            |
- |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
- |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
- |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
- |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
- |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
- |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
- |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
- |                                                                            |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
  \----------------------------------------------------------------------------/
-
- Yosys 0.33 (git sha1 2584903a060)
-
+ Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
 [TCL: yosys -import] Command name collision: found pre-existing command `cd' -> skip.
 [TCL: yosys -import] Command name collision: found pre-existing command `eval' -> skip.
 [TCL: yosys -import] Command name collision: found pre-existing command `exec' -> skip.
@@ -107,13 +91,15 @@ Optimizing module logical_unit.
 Optimizing module arithmetic_unit.
 Optimizing module alu_4bit.
 
-2.3. Executing OPT_EXPR pass (perform const folding).
+2.3. Executing FUTURE pass.
+
+2.4. Executing OPT_EXPR pass (perform const folding).
 Optimizing module control_unit.
 Optimizing module logical_unit.
 Optimizing module arithmetic_unit.
 Optimizing module alu_4bit.
 
-2.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+2.5. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \control_unit..
 Finding unused cells or wires in module \logical_unit..
 Finding unused cells or wires in module \arithmetic_unit..
@@ -121,29 +107,29 @@ Finding unused cells or wires in module \alu_4bit..
 Removed 0 unused cells and 11 unused wires.
 <suppressed ~3 debug messages>
 
-2.5. Executing CHECK pass (checking for obvious problems).
+2.6. Executing CHECK pass (checking for obvious problems).
 Checking module alu_4bit...
 Checking module arithmetic_unit...
 Checking module control_unit...
 Checking module logical_unit...
 Found and reported 0 problems.
 
-2.6. Executing OPT pass (performing simple optimizations).
+2.7. Executing OPT pass (performing simple optimizations).
 
-2.6.1. Executing OPT_EXPR pass (perform const folding).
+2.7.1. Executing OPT_EXPR pass (perform const folding).
 Optimizing module alu_4bit.
 Optimizing module arithmetic_unit.
 Optimizing module control_unit.
 Optimizing module logical_unit.
 
-2.6.2. Executing OPT_MERGE pass (detect identical cells).
+2.7.2. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\alu_4bit'.
 Finding identical cells in module `\arithmetic_unit'.
 Finding identical cells in module `\control_unit'.
 Finding identical cells in module `\logical_unit'.
 Removed a total of 0 cells.
 
-2.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+2.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
 Running muxtree optimizer on module \alu_4bit..
   Creating internal representation of mux trees.
   No muxes found in this module.
@@ -160,73 +146,73 @@ Running muxtree optimizer on module \logical_unit..
 Removed 0 multiplexer ports.
 <suppressed ~1 debug messages>
 
-2.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+2.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
   Optimizing cells in module \alu_4bit.
   Optimizing cells in module \arithmetic_unit.
   Optimizing cells in module \control_unit.
   Optimizing cells in module \logical_unit.
 Performed a total of 0 changes.
 
-2.6.5. Executing OPT_MERGE pass (detect identical cells).
+2.7.5. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\alu_4bit'.
 Finding identical cells in module `\arithmetic_unit'.
 Finding identical cells in module `\control_unit'.
 Finding identical cells in module `\logical_unit'.
 Removed a total of 0 cells.
 
-2.6.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+2.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \alu_4bit..
 Finding unused cells or wires in module \arithmetic_unit..
 Finding unused cells or wires in module \control_unit..
 Finding unused cells or wires in module \logical_unit..
 
-2.6.7. Executing OPT_EXPR pass (perform const folding).
+2.7.7. Executing OPT_EXPR pass (perform const folding).
 Optimizing module alu_4bit.
 Optimizing module arithmetic_unit.
 Optimizing module control_unit.
 Optimizing module logical_unit.
 
-2.6.8. Finished OPT passes. (There is nothing left to do.)
+2.7.8. Finished OPT passes. (There is nothing left to do.)
 
-2.7. Executing WREDUCE pass (reducing word size of cells).
+2.8. Executing WREDUCE pass (reducing word size of cells).
 Removed top 3 bits (of 8) from port Y of cell arithmetic_unit.$add$inputs/alu_4bit.v:19$2 ($add).
 Removed top 3 bits (of 8) from port Y of cell arithmetic_unit.$sub$inputs/alu_4bit.v:20$3 ($sub).
 Removed top 1 bits (of 2) from port B of cell control_unit.$eq$inputs/alu_4bit.v:40$8 ($eq).
 Removed top 4 bits (of 8) from port Y of cell logical_unit.$and$inputs/alu_4bit.v:27$4 ($and).
 Removed top 4 bits (of 8) from port Y of cell logical_unit.$xor$inputs/alu_4bit.v:28$5 ($xor).
 
-2.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+2.9. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \alu_4bit..
 Finding unused cells or wires in module \arithmetic_unit..
 Finding unused cells or wires in module \control_unit..
 Finding unused cells or wires in module \logical_unit..
 
-2.9. Executing MEMORY_COLLECT pass (generating $mem cells).
+2.10. Executing MEMORY_COLLECT pass (generating $mem cells).
 
-2.10. Executing OPT pass (performing simple optimizations).
+2.11. Executing OPT pass (performing simple optimizations).
 
-2.10.1. Executing OPT_EXPR pass (perform const folding).
+2.11.1. Executing OPT_EXPR pass (perform const folding).
 Optimizing module alu_4bit.
 Optimizing module arithmetic_unit.
 Optimizing module control_unit.
 Optimizing module logical_unit.
 
-2.10.2. Executing OPT_MERGE pass (detect identical cells).
+2.11.2. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\alu_4bit'.
 Finding identical cells in module `\arithmetic_unit'.
 Finding identical cells in module `\control_unit'.
 Finding identical cells in module `\logical_unit'.
 Removed a total of 0 cells.
 
-2.10.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+2.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \alu_4bit..
 Finding unused cells or wires in module \arithmetic_unit..
 Finding unused cells or wires in module \control_unit..
 Finding unused cells or wires in module \logical_unit..
 
-2.10.4. Finished fast OPT passes.
+2.11.4. Finished fast OPT passes.
 
-2.11. Printing statistics.
+2.12. Printing statistics.
 
 === alu_4bit ===
 
@@ -234,6 +220,8 @@ Finding unused cells or wires in module \logical_unit..
    Number of wire bits:             51
    Number of public wires:           9
    Number of public wire bits:      51
+   Number of ports:                  5
+   Number of port bits:             19
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
@@ -248,6 +236,8 @@ Finding unused cells or wires in module \logical_unit..
    Number of wire bits:             24
    Number of public wires:           4
    Number of public wire bits:      24
+   Number of ports:                  4
+   Number of port bits:             24
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
@@ -261,6 +251,8 @@ Finding unused cells or wires in module \logical_unit..
    Number of wire bits:             79
    Number of public wires:           7
    Number of public wire bits:      43
+   Number of ports:                  7
+   Number of port bits:             43
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
@@ -276,6 +268,8 @@ Finding unused cells or wires in module \logical_unit..
    Number of wire bits:             24
    Number of public wires:           4
    Number of public wire bits:      24
+   Number of ports:                  4
+   Number of port bits:             24
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
@@ -294,6 +288,8 @@ Finding unused cells or wires in module \logical_unit..
    Number of wire bits:            178
    Number of public wires:          24
    Number of public wire bits:     142
+   Number of ports:                 20
+   Number of port bits:            110
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
@@ -307,7 +303,7 @@ Finding unused cells or wires in module \logical_unit..
      $sub                            1
      $xor                            1
 
-2.12. Executing CHECK pass (checking for obvious problems).
+2.13. Executing CHECK pass (checking for obvious problems).
 Checking module alu_4bit...
 Checking module arithmetic_unit...
 Checking module control_unit...
@@ -397,13 +393,15 @@ Optimizing module logical_unit.
 Optimizing module arithmetic_unit.
 Optimizing module alu_4bit.
 
-5.3. Executing OPT_EXPR pass (perform const folding).
+5.3. Executing FUTURE pass.
+
+5.4. Executing OPT_EXPR pass (perform const folding).
 Optimizing module control_unit.
 Optimizing module logical_unit.
 Optimizing module arithmetic_unit.
 Optimizing module alu_4bit.
 
-5.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+5.5. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \control_unit..
 Finding unused cells or wires in module \logical_unit..
 Finding unused cells or wires in module \arithmetic_unit..
@@ -411,29 +409,29 @@ Finding unused cells or wires in module \alu_4bit..
 Removed 0 unused cells and 11 unused wires.
 <suppressed ~3 debug messages>
 
-5.5. Executing CHECK pass (checking for obvious problems).
+5.6. Executing CHECK pass (checking for obvious problems).
 Checking module alu_4bit...
 Checking module arithmetic_unit...
 Checking module control_unit...
 Checking module logical_unit...
 Found and reported 0 problems.
 
-5.6. Executing OPT pass (performing simple optimizations).
+5.7. Executing OPT pass (performing simple optimizations).
 
-5.6.1. Executing OPT_EXPR pass (perform const folding).
+5.7.1. Executing OPT_EXPR pass (perform const folding).
 Optimizing module alu_4bit.
 Optimizing module arithmetic_unit.
 Optimizing module control_unit.
 Optimizing module logical_unit.
 
-5.6.2. Executing OPT_MERGE pass (detect identical cells).
+5.7.2. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\alu_4bit'.
 Finding identical cells in module `\arithmetic_unit'.
 Finding identical cells in module `\control_unit'.
 Finding identical cells in module `\logical_unit'.
 Removed a total of 0 cells.
 
-5.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+5.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
 Running muxtree optimizer on module \alu_4bit..
   Creating internal representation of mux trees.
   No muxes found in this module.
@@ -450,73 +448,73 @@ Running muxtree optimizer on module \logical_unit..
 Removed 0 multiplexer ports.
 <suppressed ~1 debug messages>
 
-5.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+5.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
   Optimizing cells in module \alu_4bit.
   Optimizing cells in module \arithmetic_unit.
   Optimizing cells in module \control_unit.
   Optimizing cells in module \logical_unit.
 Performed a total of 0 changes.
 
-5.6.5. Executing OPT_MERGE pass (detect identical cells).
+5.7.5. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\alu_4bit'.
 Finding identical cells in module `\arithmetic_unit'.
 Finding identical cells in module `\control_unit'.
 Finding identical cells in module `\logical_unit'.
 Removed a total of 0 cells.
 
-5.6.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+5.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \alu_4bit..
 Finding unused cells or wires in module \arithmetic_unit..
 Finding unused cells or wires in module \control_unit..
 Finding unused cells or wires in module \logical_unit..
 
-5.6.7. Executing OPT_EXPR pass (perform const folding).
+5.7.7. Executing OPT_EXPR pass (perform const folding).
 Optimizing module alu_4bit.
 Optimizing module arithmetic_unit.
 Optimizing module control_unit.
 Optimizing module logical_unit.
 
-5.6.8. Finished OPT passes. (There is nothing left to do.)
+5.7.8. Finished OPT passes. (There is nothing left to do.)
 
-5.7. Executing WREDUCE pass (reducing word size of cells).
+5.8. Executing WREDUCE pass (reducing word size of cells).
 Removed top 3 bits (of 8) from port Y of cell arithmetic_unit.$add$inputs/alu_4bit.v:19$25 ($add).
 Removed top 3 bits (of 8) from port Y of cell arithmetic_unit.$sub$inputs/alu_4bit.v:20$26 ($sub).
 Removed top 1 bits (of 2) from port B of cell control_unit.$eq$inputs/alu_4bit.v:40$31 ($eq).
 Removed top 4 bits (of 8) from port Y of cell logical_unit.$and$inputs/alu_4bit.v:27$27 ($and).
 Removed top 4 bits (of 8) from port Y of cell logical_unit.$xor$inputs/alu_4bit.v:28$28 ($xor).
 
-5.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+5.9. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \alu_4bit..
 Finding unused cells or wires in module \arithmetic_unit..
 Finding unused cells or wires in module \control_unit..
 Finding unused cells or wires in module \logical_unit..
 
-5.9. Executing MEMORY_COLLECT pass (generating $mem cells).
+5.10. Executing MEMORY_COLLECT pass (generating $mem cells).
 
-5.10. Executing OPT pass (performing simple optimizations).
+5.11. Executing OPT pass (performing simple optimizations).
 
-5.10.1. Executing OPT_EXPR pass (perform const folding).
+5.11.1. Executing OPT_EXPR pass (perform const folding).
 Optimizing module alu_4bit.
 Optimizing module arithmetic_unit.
 Optimizing module control_unit.
 Optimizing module logical_unit.
 
-5.10.2. Executing OPT_MERGE pass (detect identical cells).
+5.11.2. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\alu_4bit'.
 Finding identical cells in module `\arithmetic_unit'.
 Finding identical cells in module `\control_unit'.
 Finding identical cells in module `\logical_unit'.
 Removed a total of 0 cells.
 
-5.10.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+5.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \alu_4bit..
 Finding unused cells or wires in module \arithmetic_unit..
 Finding unused cells or wires in module \control_unit..
 Finding unused cells or wires in module \logical_unit..
 
-5.10.4. Finished fast OPT passes.
+5.11.4. Finished fast OPT passes.
 
-5.11. Printing statistics.
+5.12. Printing statistics.
 
 === alu_4bit ===
 
@@ -524,6 +522,8 @@ Finding unused cells or wires in module \logical_unit..
    Number of wire bits:             51
    Number of public wires:           9
    Number of public wire bits:      51
+   Number of ports:                  5
+   Number of port bits:             19
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
@@ -538,6 +538,8 @@ Finding unused cells or wires in module \logical_unit..
    Number of wire bits:             24
    Number of public wires:           4
    Number of public wire bits:      24
+   Number of ports:                  4
+   Number of port bits:             24
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
@@ -551,6 +553,8 @@ Finding unused cells or wires in module \logical_unit..
    Number of wire bits:             79
    Number of public wires:           7
    Number of public wire bits:      43
+   Number of ports:                  7
+   Number of port bits:             43
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
@@ -566,6 +570,8 @@ Finding unused cells or wires in module \logical_unit..
    Number of wire bits:             24
    Number of public wires:           4
    Number of public wire bits:      24
+   Number of ports:                  4
+   Number of port bits:             24
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
@@ -584,6 +590,8 @@ Finding unused cells or wires in module \logical_unit..
    Number of wire bits:            178
    Number of public wires:          24
    Number of public wire bits:     142
+   Number of ports:                 20
+   Number of port bits:            110
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
@@ -597,7 +605,7 @@ Finding unused cells or wires in module \logical_unit..
      $sub                            1
      $xor                            1
 
-5.12. Executing CHECK pass (checking for obvious problems).
+5.13. Executing CHECK pass (checking for obvious problems).
 Checking module alu_4bit...
 Checking module arithmetic_unit...
 Checking module control_unit...
@@ -712,6 +720,6 @@ Found 40 $equiv cells in equiv:
   Of those cells 40 are proven and 0 are unproven.
   Equivalence successfully proven!
 
-End of script. Logfile hash: 22cdcc4ee7, CPU: user 0.15s system 0.01s, MEM: 29.77 MB peak
-Yosys 0.33 (git sha1 2584903a060)
-Time spent: 56% 2x read_liberty (0 sec), 9% 2x proc_dff (0 sec), ...
+End of script. Logfile hash: 89d053bea1, CPU: user 0.08s system 0.01s, MEM: 33.69 MB peak
+Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+Time spent: 39% 2x read_liberty (0 sec), 15% 10x opt_expr (0 sec), ...

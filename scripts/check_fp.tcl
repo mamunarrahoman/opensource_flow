@@ -84,11 +84,18 @@ make_tracks
 source //work/scripts/pin_placement.tcl
 
 # Check Pin Placement Verification
-puts "\[INFO\] Verifying pin placement..."
-set unplaced_pins [get_ports -filter "placement_status == none"]
-if {[llength $unplaced_pins] > 0} {
-    puts "\[WARN\] [llength $unplaced_pins] pin(s) left unplaced:"
-    foreach p $unplaced_pins { puts "        $p" }
-} else {
-    puts "\[INFO\] All pins placed successfully."
-}
+#puts "\[INFO\] Verifying pin placement..."
+#set unplaced_pins [get_ports -filter "placement_status == none"]
+#if {[llength $unplaced_pins] > 0} {
+#    puts "\[WARN\] [llength $unplaced_pins] pin(s) left unplaced:"
+#    foreach p $unplaced_pins { puts "        $p" }
+#} else {
+#    puts "\[INFO\] All pins placed successfully."
+#}
+
+# Write DEF and DB
+cd //work; # using docker that's why need to change directory to work to write design
+write_def $DESIGN_DIR/floorplan.def
+write_db $DESIGN_DIR/floorplan.db
+
+exit

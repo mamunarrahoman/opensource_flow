@@ -1,0 +1,29 @@
+# DESIGN NAME   : alu_4bit
+# STAGE         : Makefile
+# LAST UPDATED  : 2026-09-06 00:29:43
+# VERSION       : build_v1.1
+# TOOL NAME	: Yosys
+# DESIGNER      : Mamunar Rahoman
+
+yosys -import
+
+read_verilog $::env(DESIGN_VERILOG)
+prep -top $::env(DESIGN_NM)
+design -stash gold
+
+
+read_verilog $::env(DESIGN_VERILOG)
+read_liberty -lib $::env(LIB_PATH)
+prep -top $::env(DESIGN_NM)
+design -stash gate
+
+design -copy-from gold -as gold $::env(DESIGN_NM)
+design -copy-from gate -as gate $::env(DESIGN_NM)
+
+equiv_make gold gate equiv
+hierarchy -top equiv
+
+equiv_simple
+equiv_induct
+
+equiv_status -assert

@@ -20,7 +20,7 @@ include design_setup.mk
 .PHONY: all setup synthesis logic_equiv floorplan clean_setup clean_logic clean_floorplan clean_all
 
 # MAKE ALL
-all: setup syn logic_equiv
+all: setup syn logic_equiv floorplan
 
 # DESIGN SETUP -----
 setup: $(LOG_DIR)/environment_setup.pass
@@ -104,7 +104,7 @@ floorplan: $(LOG_DIR)/floorplan.pass
 
 $(LOG_DIR)/floorplan.pass:
 	@echo "Starting Floorplan Process"
-	@util/docker_shell openroad
+	@util/docker_shell openroad -exit //work/$(SCRIPTS_DIR)/check_fp.tcl -log //work/$(LOG_DIR)/floorplan.log || true
 	@if ! grep -i "ERROR" $(LOG_DIR)/floorplan.log > /dev/null; then \
                 touch $(LOG_DIR)/floorplan.pass; \
                 echo "PASS" > $(LOG_DIR)/floorplan.pass; \
@@ -125,5 +125,5 @@ clean_floorplan:
 
 
 # CLEAN ALL
-clean_all: clean_setup clean_syn clean_logic
+clean_all: clean_setup clean_syn clean_logic clean_floorplan
 	@echo "CLEANED ALL ..."

@@ -1,0 +1,47 @@
+# DESIGN NAME   : alu_4bit
+# STAGE         : Makefile
+# LAST UPDATED  : 2026-09-06 00:29:43
+# VERSION       : build_v1.1
+# TOOL          : Yosys
+# DESIGNER      : Mamunar Rahoman
+
+#-------------------------------------------------------#
+#  ______   ___   _ _____ _   _ _____ ____ ___ ____     #
+# / ___\ \ / / \ | |_   _| | | | ____/ ___|_ _/ ___|    #
+# \___ \\ V /|  \| | | | | |_| |  _| \___ \| |\___ \    #
+#  ___) || | | |\  | | | |  _  | |___ ___) | | ___) |   #
+# |____/ |_| |_| \_| |_| |_| |_|_____|____/___|____/    #
+#                                                       #
+#-------------------------------------------------------#
+
+yosys -import
+
+# Synthesis flow from: https://yosyshq.net/yosys/
+
+# Read design
+read_verilog $::env(DESIGN_VERILOG)
+
+# Elaborate design hierarchy
+hierarchy -check -top $::env(DESIGN_NM)
+
+# The high-level stuff
+yosys proc; opt; fsm; opt; memory; opt
+
+# Mapping to internal cell library
+techmap; opt
+
+# Mapping flip-flops to PDK LIB
+dfflibmap -liberty $::env(LIB_PATH)
+
+# Mapping logic to PDK LIB
+abc -liberty $::env(LIB_PATH)
+
+# Cleanup
+clean
+
+# Write synthesized design
+write_verilog $::env(SYN_DIR)/${::env(DESIGN_NM)}_mapped.v
+
+# To customize the dot file to understand the input/output port
+show -color green i:* -color red o:* -format dot -prefix $::env(SYN_DIR)/${::env(DESIGN_NM)}_mapped
+

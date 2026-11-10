@@ -57,7 +57,7 @@ set CORE_LY   10
 set CORE_UX   1190
 set CORE_UY   1190
 
-# Site name fromtech LEF (check with `read_lef` output or PDK docs)
+# Site name from tech LEF (check with `read_lef` output or PDK docs)
 set SITE_NAME "FreePDK45_38x28_10R_NP_162NW_34O"
 
 # Initiate Floorplan
